@@ -1,7 +1,10 @@
-#include <iostream>
+#include "game.h"
 
-using namespace std;
+/* Main file
+ * The Entry point of the program
+ */
 
-int main() {
-    cout << "Hello World" << endl;
+int main(int argc, char *argv[]) {
+  Game game;
+  return 0;
 }
