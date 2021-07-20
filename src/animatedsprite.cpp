@@ -1,7 +1,7 @@
 #include "animatedsprite.h"
 #include "globals.h"
 #include "graphics.h"
-#include "sprites.h"
+#include "sprite.h"
 
 /* AnimatedSprite Class
  * Animates Sprites
@@ -13,8 +13,12 @@ AnimatedSprite::AnimatedSprite(Graphics &graphics, const std::string &filepath,
                                int sourceX, int sourceY, int width, int heigth,
                                float posX, float posY, float timeToUpdate)
     : Sprite(graphics, filepath, sourceX, sourceY, width, heigth, posX, posY),
-      _frameIndex(0), _timeElapsed(0), _timeToUpdate(timeToUpdate),
-      _visible(true), _currentAnimationOnce(false), _currentAnimation("") {}
+      _frameIndex(0),
+      _timeElapsed(0),
+      _timeToUpdate(timeToUpdate),
+      _visible(true),
+      _currentAnimationOnce(false),
+      _currentAnimation("") {}
 
 void AnimatedSprite::playAnimation(std::string animation, bool once) {
   this->_currentAnimationOnce = once;
@@ -27,6 +31,7 @@ void AnimatedSprite::playAnimation(std::string animation, bool once) {
 void AnimatedSprite::update(int elapsedTime) {
   Sprite::update();
   this->_timeElapsed += elapsedTime;
+
   if (this->_timeElapsed > this->_timeToUpdate) {
     this->_timeElapsed -= this->_timeToUpdate;
     if ((this->_frameIndex) <

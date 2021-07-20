@@ -2,12 +2,10 @@
 #define GLOBALS_H
 
 namespace globals {
-const int SCREEN_WIDTH = 600;
-const int SCREEN_HEIGHT = 480;
-const float SPRITE_SCALE = 2.0f;
-} // namespace globals
-
-enum Direction { LEFT, RIGHT, UP, DOWN };
+  const int SCREEN_WIDTH = 500;
+  const int SCREEN_HEIGHT = 376;
+  const float SPRITE_SCALE = 1.0f;
+}
 
 struct Vector2 {
   int x, y;

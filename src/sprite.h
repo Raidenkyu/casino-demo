@@ -7,20 +7,20 @@
 class Graphics;
 
 class Sprite {
-public:
+ public:
   Sprite();
   Sprite(Graphics &graphics, const std::string &filepath, int sourceX,
          int sourceY, int width, int length, float PosX, float PosY);
   virtual ~Sprite();
   virtual void update();
-  void draw(Graphics &graphics, int x, int y);
+  virtual void draw(Graphics &graphics, int x, int y);
 
-protected:
+ protected:
   SDL_Rect _sourceRect;
   SDL_Texture *_spriteSheet;
   float _x, _y;
 
-private:
+ private:
 };
 
 #endif

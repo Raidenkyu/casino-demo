@@ -1,8 +1,8 @@
-#include "sprites.h"
-#include "globals.h"
-#include "graphics.h"
 #include <iostream>
 
+#include "globals.h"
+#include "graphics.h"
+#include "sprite.h"
 
 /* Sprite Class
  * Responsible for rendering sprites(with the help of graphics class) and
@@ -22,7 +22,8 @@ Sprite::Sprite(Graphics &graphics, const std::string &filepath, int sourceX,
       graphics.getRenderer(), graphics.loadImage(filepath));
 
   if (_spriteSheet == NULL)
-    std::cout << std::endl << "Error: Unable to load Image" << std::endl;
+    std::cout << std::endl
+              << "Error: Unable to load Image" << std::endl;
 }
 
 Sprite::~Sprite() {}

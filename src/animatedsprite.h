@@ -1,10 +1,11 @@
 #ifndef ANIMATED_SPRITE_H
 #define ANIMATED_SPRITE_H
 
-#include "globals.h"
-#include "sprites.h"
 #include <map>
 #include <vector>
+
+#include "globals.h"
+#include "sprite.h"
 
 class Graphics;
 
@@ -13,7 +14,7 @@ class Graphics;
  */
 
 class AnimatedSprite : public Sprite {
-public:
+ public:
   AnimatedSprite();
   AnimatedSprite(Graphics &graphics, const std::string &filepath, int sourceX,
                  int sourceY, int width, int heigth, float posX, float posY,
@@ -22,7 +23,7 @@ public:
   void update(int elapsedTime);
   void draw(Graphics &graphics, int x, int y);
 
-protected:
+ protected:
   double _timeToUpdate;
   bool _currentAnimationOnce;
   std::string _currentAnimation;
@@ -34,7 +35,7 @@ protected:
   virtual void animationDone(std::string currentAnimation) = 0;
   virtual void setupAnimations() = 0;
 
-private:
+ private:
   std::map<std::string, std::vector<SDL_Rect>> _animations;
   std::map<std::string, Vector2> _offsets;
   // int _frameIndex;
