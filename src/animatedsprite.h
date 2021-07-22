@@ -18,9 +18,10 @@ class AnimatedSprite : public Sprite {
   AnimatedSprite();
   AnimatedSprite(Graphics &graphics, const std::string &filepath, int sourceX,
                  int sourceY, int width, int heigth, float posX, float posY,
-                 float timeToUpdate);
+                 float timeToUpdate, float scale = 1);
   void playAnimation(std::string animation, bool once = false);
-  void update(int elapsedTime);
+  void update(float elapsedTime);
+  void draw(Graphics &graphics);
   void draw(Graphics &graphics, int x, int y);
 
  protected:

@@ -1,7 +1,8 @@
 #include "graphics.h"
-#include "globals.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include "globals.h"
+
 
 /* Graphics Class
  * Generates the visual content of every frame
@@ -11,7 +12,7 @@
 Graphics::Graphics() {
   SDL_CreateWindowAndRenderer(globals::SCREEN_WIDTH, globals::SCREEN_HEIGHT, 0,
                               &this->_window, &this->_renderer);
-  SDL_SetWindowTitle(_window, "Cave Story");
+  SDL_SetWindowTitle(_window, "Casino Demo");
 }
 
 Graphics::~Graphics() { SDL_DestroyWindow(this->_window); }

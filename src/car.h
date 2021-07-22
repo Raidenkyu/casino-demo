@@ -1,14 +1,14 @@
-#ifndef BACKGROUND_H
-#define BACKGROUND_H
+#ifndef CAR_H
+#define CAR_H
 
 #include "animatedsprite.h"
 
 class Graphics;
 
-class Background : public AnimatedSprite {
+class Car : public AnimatedSprite {
  public:
-  Background();
-  Background(Graphics &graphics);
+  Car();
+  Car(Graphics &graphics);
   void draw(Graphics &graphics);
   void update(float elapsedTime);
   void animationDone(std::string currentAnimation);

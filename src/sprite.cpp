@@ -12,8 +12,8 @@
 Sprite::Sprite() {}
 
 Sprite::Sprite(Graphics &graphics, const std::string &filepath, int sourceX,
-               int sourceY, int width, int height, float PosX, float PosY)
-    : _x(PosX), _y(PosY) {
+               int sourceY, int width, int height, float PosX, float PosY, float scale)
+    : _x(PosX), _y(PosY), scale(scale) {
   this->_sourceRect.x = sourceX;
   this->_sourceRect.y = sourceY;
   this->_sourceRect.w = width;
@@ -30,8 +30,8 @@ Sprite::~Sprite() {}
 
 void Sprite::draw(Graphics &graphics, int x, int y) {
   SDL_Rect destinationRectangel = {x, y,
-                                   static_cast<int>(this->_sourceRect.w * globals::SPRITE_SCALE),
-                                   static_cast<int>(this->_sourceRect.h * globals::SPRITE_SCALE)};
+                                   static_cast<int>(this->_sourceRect.w * this->scale),
+                                   static_cast<int>(this->_sourceRect.h * this->scale)};
   graphics.blitSurface(this->_spriteSheet, &this->_sourceRect,
                        &destinationRectangel);
 }

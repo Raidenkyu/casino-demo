@@ -4,7 +4,6 @@
 namespace globals {
   const int SCREEN_WIDTH = 500;
   const int SCREEN_HEIGHT = 376;
-  const float SPRITE_SCALE = 1.0f;
 }
 
 struct Vector2 {

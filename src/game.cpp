@@ -3,6 +3,7 @@
 #include <memory>
 
 #include "background.h"
+#include "car.h"
 #include "game.h"
 #include "graphics.h"
 
@@ -58,7 +59,7 @@ void Game::draw(Graphics &graphics) {
   graphics.clear();
 
   for (auto &sprite : this->_gameSprites) {
-    sprite->draw(graphics, 0, 0);
+    sprite->draw(graphics);
   }
 
   //this->_player.draw(graphics);
@@ -76,4 +77,7 @@ void Game::update(float elapsedTime) {
 void Game::initGameElements(Graphics &graphics) {
   this->_gameSprites.push_back(
       std::make_shared<Background>(graphics));
+
+  this->_gameSprites.push_back(
+      std::make_shared<Car>(graphics));
 }

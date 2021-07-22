@@ -11,8 +11,8 @@ AnimatedSprite::AnimatedSprite() {}
 
 AnimatedSprite::AnimatedSprite(Graphics &graphics, const std::string &filepath,
                                int sourceX, int sourceY, int width, int heigth,
-                               float posX, float posY, float timeToUpdate)
-    : Sprite(graphics, filepath, sourceX, sourceY, width, heigth, posX, posY),
+                               float posX, float posY, float timeToUpdate, float scale)
+    : Sprite(graphics, filepath, sourceX, sourceY, width, heigth, posX, posY, scale),
       _frameIndex(0),
       _timeElapsed(0),
       _timeToUpdate(timeToUpdate),
@@ -28,7 +28,7 @@ void AnimatedSprite::playAnimation(std::string animation, bool once) {
   }
 }
 
-void AnimatedSprite::update(int elapsedTime) {
+void AnimatedSprite::update(float elapsedTime) {
   Sprite::update();
   this->_timeElapsed += elapsedTime;
 
@@ -47,13 +47,17 @@ void AnimatedSprite::update(int elapsedTime) {
   }
 }
 
+void AnimatedSprite::draw(Graphics &graphics) {
+  this->draw(graphics, this->_x, this->_y);
+}
+
 void AnimatedSprite::draw(Graphics &graphics, int x, int y) {
   if (this->_visible) {
     SDL_Rect destinationRectangle;
     destinationRectangle.x = x + this->_offsets[this->_currentAnimation].x;
     destinationRectangle.y = y + this->_offsets[this->_currentAnimation].y;
-    destinationRectangle.w = this->_sourceRect.w * globals::SPRITE_SCALE;
-    destinationRectangle.h = this->_sourceRect.h * globals::SPRITE_SCALE;
+    destinationRectangle.w = this->_sourceRect.w * this->scale;
+    destinationRectangle.h = this->_sourceRect.h * this->scale;
 
     SDL_Rect sourceRect =
         this->_animations[this->_currentAnimation][this->_frameIndex];
