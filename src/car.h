@@ -13,6 +13,9 @@ class Car : public AnimatedSprite {
   void update(float elapsedTime);
   void animationDone(std::string currentAnimation);
   void setupAnimations();
+
+ private:
+  void recolorTexture();
 };
 
 #endif
