@@ -10,7 +10,6 @@ class Background : public AnimatedSprite {
   Background();
   Background(Graphics &graphics);
   void draw(Graphics &graphics);
-  void update(float elapsedTime);
   void animationDone(std::string currentAnimation);
   void setupAnimations();
 };

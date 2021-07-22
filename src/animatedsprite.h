@@ -20,7 +20,7 @@ class AnimatedSprite : public Sprite {
                  int sourceY, int width, int heigth, float posX, float posY,
                  float timeToUpdate, float scale = 1);
   void playAnimation(std::string animation, bool once = false);
-  void update(float elapsedTime);
+  virtual void update(float elapsedTime);
   void draw(Graphics &graphics);
   void draw(Graphics &graphics, int x, int y);
 

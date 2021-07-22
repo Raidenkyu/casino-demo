@@ -1,12 +1,10 @@
 #include "car.h"
 #include "graphics.h"
 
-#include <iostream>
-
 Car::Car() {}
 
 Car::Car(Graphics &graphics)
-    : AnimatedSprite(graphics, "res/elements/car.png", 0, 0, 400, 300, -10, 300, 100, 0.4) {
+    : AnimatedSprite(graphics, "res/elements/car.png", 0, 0, 400, 300, -150, 300, 100, 0.4) {
   graphics.loadImage("res/elements/car.png");
   this->setupAnimations();
 }
@@ -18,7 +16,7 @@ void Car::setupAnimations() {
 }
 
 void Car::update(float elapsedTime) {
-  this->_x += 10 * elapsedTime;
-  std::cout << this->_x << std::endl;
+  this->_x += 0.1 * elapsedTime;
+
   AnimatedSprite::update(elapsedTime);
 }
