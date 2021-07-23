@@ -3,7 +3,6 @@
 #include <memory>
 
 #include "background.h"
-#include "car.h"
 #include "game.h"
 #include "graphics.h"
 
@@ -39,6 +38,10 @@ void Game::gameLoop() {
     if (SDL_PollEvent(&event)) {
       if (event.type == SDL_QUIT)
         return;
+
+      if (event.type == SDL_MOUSEBUTTONDOWN) {
+        this->car->start(graphics);
+      }
     }
 
     // Calculate Elapsed Time
@@ -70,14 +73,13 @@ void Game::update(float elapsedTime) {
   for (auto &sprite : this->_gameSprites) {
     sprite->update(elapsedTime);
   }
-
-  //this->_player.update(elapsedTime);
 }
 
 void Game::initGameElements(Graphics &graphics) {
   this->_gameSprites.push_back(
       std::make_shared<Background>(graphics));
 
-  this->_gameSprites.push_back(
-      std::make_shared<Car>(graphics));
+  this->car = std::make_shared<Car>(graphics);
+
+  this->_gameSprites.push_back(this->car);
 }

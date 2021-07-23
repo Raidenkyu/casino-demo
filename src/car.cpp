@@ -20,12 +20,37 @@ void Car::setupAnimations() {
 }
 
 void Car::update(float elapsedTime) {
+  if (this->state != MOVING) return;
+
   this->_x += 0.1 * elapsedTime;
+
+  if (this->_x > globals::SCREEN_WIDTH) {
+    this->state = FINISHED;
+  }
 
   AnimatedSprite::update(elapsedTime);
 }
 
-// Red 12525102
+void Car::start(Graphics &graphics) {
+  switch (this->state) {
+    case MOVING:
+      this->state = PAUSED;
+      break;
+    case PAUSED:
+      this->state = MOVING;
+      break;
+    case FINISHED:
+      this->_x = -150;
+      this->_y = 300;
+
+      this->recolorTexture(graphics);
+      this->state = MOVING;
+      break;
+
+    default:
+      break;
+  }
+}
 
 void Car::recolorTexture(Graphics &graphics) {
   SDL_Surface *originalSurface = graphics.loadImage("res/elements/car.png");
@@ -35,9 +60,9 @@ void Car::recolorTexture(Graphics &graphics) {
 
   srand((unsigned)time(0));
 
-  int newR = rand() % 0xFF;
-  int newG = rand() % 0xFF;
-  int newB = rand() % 0xFF;
+  int newR = rand() % 0xFF;  // Random red gradient
+  int newG = rand() % 0xFF;  // Random green gradient
+  int newB = rand() % 0xFF;  // Random blue gradient
 
   for (int i = 0; i < surface->h * surface->w; i++) {
     uint8_t r;
@@ -53,4 +78,8 @@ void Car::recolorTexture(Graphics &graphics) {
   }
 
   this->_spriteSheet = SDL_CreateTextureFromSurface(graphics.getRenderer(), surface);
+}
+
+CarState Car::getState() {
+  return this->state;
 }

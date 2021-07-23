@@ -5,6 +5,12 @@
 
 class Graphics;
 
+enum CarState {
+  MOVING,
+  FINISHED,
+  PAUSED
+};
+
 class Car : public AnimatedSprite {
  public:
   Car();
@@ -13,8 +19,12 @@ class Car : public AnimatedSprite {
   void update(float elapsedTime);
   void animationDone(std::string currentAnimation);
   void setupAnimations();
+  void start(Graphics &graphics);
+  CarState getState();
 
  private:
+  CarState state = FINISHED;
+
   void recolorTexture(Graphics &graphics);
 };
 

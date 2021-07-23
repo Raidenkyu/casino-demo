@@ -5,6 +5,8 @@
 #include <vector>
 
 #include "animatedsprite.h"
+#include "button.h"
+#include "car.h"
 
 class Graphics;
 
@@ -16,6 +18,8 @@ class Game {
  private:
   // Game Data
   std::vector<std::shared_ptr<AnimatedSprite>> _gameSprites;
+  std::vector<std::shared_ptr<Button>> buttons;
+  std::shared_ptr<Car> car;
 
   // Game Loop
   void gameLoop();
