@@ -9,7 +9,7 @@ class Background : public AnimatedSprite {
  public:
   Background();
   Background(Graphics &graphics);
-  void draw(Graphics &graphics);
+
   void animationDone(std::string currentAnimation);
   void setupAnimations();
 };

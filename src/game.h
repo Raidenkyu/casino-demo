@@ -5,9 +5,8 @@
 #include <vector>
 
 #include "animatedsprite.h"
+#include "button.h"
 #include "car.h"
-#include "ui/button.h"
-
 
 class Graphics;
 
@@ -21,6 +20,8 @@ class Game {
   std::vector<std::shared_ptr<AnimatedSprite>> _gameSprites;
   std::vector<std::shared_ptr<Button>> buttons;
   std::shared_ptr<Car> car;
+
+  unsigned int coinsCount = 0;
 
   // Game Loop
   void gameLoop();

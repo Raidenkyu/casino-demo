@@ -13,6 +13,7 @@ class Sprite {
          int sourceY, int width, int length, float PosX, float PosY, float scale = 1);
   virtual ~Sprite();
   void update();
+  virtual void draw(Graphics &graphics);
   virtual void draw(Graphics &graphics, int x, int y);
 
  protected:

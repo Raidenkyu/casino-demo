@@ -15,7 +15,7 @@ class Car : public AnimatedSprite {
  public:
   Car();
   Car(Graphics &graphics);
-  void draw(Graphics &graphics);
+
   void update(float elapsedTime);
   void animationDone(std::string currentAnimation);
   void setupAnimations();

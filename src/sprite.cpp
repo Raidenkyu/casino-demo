@@ -28,6 +28,10 @@ Sprite::Sprite(Graphics &graphics, const std::string &filepath, int sourceX,
 
 Sprite::~Sprite() {}
 
+void Sprite::draw(Graphics &graphics) {
+  this->draw(graphics, this->_x, this->_y);
+}
+
 void Sprite::draw(Graphics &graphics, int x, int y) {
   SDL_Rect destinationRectangel = {x, y,
                                    static_cast<int>(this->_sourceRect.w * this->scale),

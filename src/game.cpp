@@ -5,6 +5,7 @@
 #include "background.h"
 #include "game.h"
 #include "graphics.h"
+#include "playButton.h"
 
 /* Game Class
  * The "Game" class where the game loop runs
@@ -41,6 +42,14 @@ void Game::gameLoop() {
 
       if (event.type == SDL_MOUSEBUTTONDOWN) {
         this->car->start(graphics);
+
+        //Get mouse position
+        int x, y;
+        SDL_GetMouseState(&x, &y);
+
+        for (auto &button : this->buttons) {
+          button->handleMouseEvent(event.type, x, y, coinsCount);
+        }
       }
     }
 
@@ -65,7 +74,10 @@ void Game::draw(Graphics &graphics) {
     sprite->draw(graphics);
   }
 
-  //this->_player.draw(graphics);
+  for (auto &button : this->buttons) {
+    button->draw(graphics);
+  }
+
   graphics.flip();
 }
 
@@ -82,4 +94,6 @@ void Game::initGameElements(Graphics &graphics) {
   this->car = std::make_shared<Car>(graphics);
 
   this->_gameSprites.push_back(this->car);
+
+  this->buttons.push_back(std::make_shared<PlayButton>(graphics));
 }
