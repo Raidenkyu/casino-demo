@@ -3,11 +3,9 @@
 #include <SDL2/SDL_image.h>
 #include "globals.h"
 
-
 /* Graphics Class
  * Generates the visual content of every frame
-
-*/
+ */
 
 Graphics::Graphics() {
   SDL_CreateWindowAndRenderer(globals::SCREEN_WIDTH, globals::SCREEN_HEIGHT, 0,

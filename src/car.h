@@ -15,7 +15,7 @@ class Car : public AnimatedSprite {
   void setupAnimations();
 
  private:
-  void recolorTexture();
+  void recolorTexture(Graphics &graphics);
 };
 
 #endif

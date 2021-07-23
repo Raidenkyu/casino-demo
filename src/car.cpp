@@ -8,7 +8,7 @@ Car::Car() {}
 Car::Car(Graphics &graphics)
     : AnimatedSprite(graphics, "res/elements/car.png", 0, 0, 400, 300, -150, 300, 100, 0.4) {
   graphics.loadImage("res/elements/car.png");
-  this->recolorTexture();
+  this->recolorTexture(graphics);
 
   this->setupAnimations();
 }
@@ -27,26 +27,28 @@ void Car::update(float elapsedTime) {
 
 // Red 12525102
 
-void Car::recolorTexture() {
-  // // initialize SDL, window, renderer, texture
-  // int pitch, w, h;
-  // void *pixels;
+void Car::recolorTexture(Graphics &graphics) {
+  SDL_Surface *surface = graphics.loadImage("res/elements/car.png");
+  Uint32 *pixels = (Uint32 *)surface->pixels;
 
-  // SDL_SetTextureBlendMode(this->_spriteSheet, SDL_BLENDMODE_BLEND);
+  srand((unsigned)time(0));
 
-  // SDL_QueryTexture(this->_spriteSheet, NULL, NULL, &w, &h);
-  // SDL_LockTexture(this->_spriteSheet, NULL, &pixels, &pitch);
-  // Uint32 *upixels = (Uint32 *)pixels;
+  int newR = rand() % 0xFF;
+  int newG = rand() % 0xFF;
+  int newB = rand() % 0xFF;
 
-  // // manipulate pixels
-  // for (int i = 0; i < w * h; i++) {
-  //   if (upixels[i] == 12525102) {
-  //     upixels[i] = SDL_Color(rand() % 256, rand() % 256, rand() % 256, 255);
-  //   }
-  // }
+  for (int i = 0; i < surface->h * surface->w; i++) {
+    uint8_t r;
+    uint8_t g;
+    uint8_t b;
 
-  // // replace the old pixels with the new ones
-  // memcpy(pixels, upixels, (pitch / 4) * h);
+    uint32_t pixel = ((uint32_t *)surface->pixels)[i];
+    SDL_GetRGB(pixel, surface->format, &r, &g, &b);
 
-  // SDL_UnlockTexture(this->_spriteSheet);
+    if (r == 0xBF && g == 0x1E && b == 0x2E) {
+      pixels[i] = SDL_MapRGB(surface->format, newR, newG, newB);
+    }
+  }
+
+  this->_spriteSheet = SDL_CreateTextureFromSurface(graphics.getRenderer(), surface);
 }
