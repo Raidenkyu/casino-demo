@@ -1,8 +1,8 @@
 #include "button.h"
 
-Button::Button() {
-}
-Button::Button(Graphics& graphics) {
+Button::Button() {}
+
+Button::Button(Graphics& graphics) : Sprite(graphics, "res/elements/button.png", 0, 0, 223, 106, 0, 0, 1) {
 }
 
 void Button::handleMouseEvent(Uint32 eventType, int x, int y) {
@@ -15,12 +15,14 @@ void Button::handleMouseEvent(Uint32 eventType, int x, int y) {
         if (this->pressed) return;
 
         this->pressed = true;
+        this->buttonEffect();
         break;
 
       case SDL_MOUSEBUTTONUP:
         if (!this->pressed) return;
 
         this->pressed = true;
+        break;
 
       default:
         break;

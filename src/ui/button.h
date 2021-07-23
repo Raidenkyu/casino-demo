@@ -3,7 +3,7 @@
 
 #include <SDL2/SDL.h>
 
-#include "sprite.h"
+#include "../sprite.h"
 
 class Button : public Sprite {
  public:
@@ -11,8 +11,7 @@ class Button : public Sprite {
   Button(Graphics& graphics);
 
   void handleMouseEvent(Uint32 eventType, int x, int y);
-  virtual void buttonPressed() = 0;
-  virtual void buttonUnpressed() = 0;
+  virtual void buttonEffect() = 0;
 
  protected:
   bool pressed = false;
