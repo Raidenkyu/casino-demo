@@ -28,7 +28,9 @@ void Car::update(float elapsedTime) {
 // Red 12525102
 
 void Car::recolorTexture(Graphics &graphics) {
-  SDL_Surface *surface = graphics.loadImage("res/elements/car.png");
+  SDL_Surface *originalSurface = graphics.loadImage("res/elements/car.png");
+  SDL_Surface *surface = SDL_DuplicateSurface(originalSurface);
+
   Uint32 *pixels = (Uint32 *)surface->pixels;
 
   srand((unsigned)time(0));
