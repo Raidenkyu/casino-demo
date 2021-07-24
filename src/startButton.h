@@ -7,7 +7,7 @@
 class StartButton : public Button {
  public:
   StartButton();
-  StartButton(Graphics& graphics, Car* car);
+  StartButton(Graphics& graphics, Fonts& fonts, Car* car);
 
  private:
   Car* car;

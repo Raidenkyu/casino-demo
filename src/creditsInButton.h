@@ -6,7 +6,7 @@
 class CreditsInButton : public Button {
  public:
   CreditsInButton();
-  CreditsInButton(Graphics& graphics);
+  CreditsInButton(Graphics& graphics, Fonts& fonts);
 
  private:
   void buttonEffect(unsigned int& coinsCount);

@@ -5,6 +5,7 @@
 #include "background.h"
 #include "creditsInButton.h"
 #include "creditsOutButton.h"
+#include "fonts.h"
 #include "game.h"
 #include "graphics.h"
 #include "startButton.h"
@@ -21,6 +22,7 @@ namespace {
 
 Game::Game() {
   SDL_Init(SDL_INIT_EVERYTHING);
+  TTF_Init();
   this->gameLoop();
 }
 
@@ -29,8 +31,9 @@ Game::~Game() {}
 void Game::gameLoop() {
   // Setting up data before begining the loop/game
   Graphics graphics;
+  Fonts fonts;
   SDL_Event event;
-  initGameElements(graphics);
+  initGameElements(graphics, fonts);
 
   // Start Tick Counter
   int LAST_TIME_UPDATE = SDL_GetTicks();
@@ -87,7 +90,7 @@ void Game::update(float elapsedTime) {
   }
 }
 
-void Game::initGameElements(Graphics &graphics) {
+void Game::initGameElements(Graphics &graphics, Fonts &fonts) {
   this->_gameSprites.push_back(
       std::make_shared<Background>(graphics));
 
@@ -95,7 +98,7 @@ void Game::initGameElements(Graphics &graphics) {
 
   this->_gameSprites.push_back(this->car);
 
-  this->buttons.push_back(std::make_shared<CreditsInButton>(graphics));
-  this->buttons.push_back(std::make_shared<CreditsOutButton>(graphics));
-  this->buttons.push_back(std::make_shared<StartButton>(graphics, this->car.get()));
+  this->buttons.push_back(std::make_shared<CreditsInButton>(graphics, fonts));
+  this->buttons.push_back(std::make_shared<CreditsOutButton>(graphics, fonts));
+  this->buttons.push_back(std::make_shared<StartButton>(graphics, fonts, this->car.get()));
 }

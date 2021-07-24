@@ -7,6 +7,7 @@
 #include "animatedsprite.h"
 #include "button.h"
 #include "car.h"
+#include "fonts.h"
 
 class Graphics;
 
@@ -29,7 +30,7 @@ class Game {
   void update(float elapsedTime);
 
   // Game Setup
-  void initGameElements(Graphics &graphics);
+  void initGameElements(Graphics &graphics, Fonts &fonts);
 };
 
 #endif
