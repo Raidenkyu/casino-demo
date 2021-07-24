@@ -19,13 +19,16 @@ class Car : public AnimatedSprite {
   void update(float elapsedTime);
   void animationDone(std::string currentAnimation);
   void setupAnimations();
-  void start(Graphics &graphics);
+  void start();
   CarState getState();
+  bool isFinished();
 
  private:
   CarState state = FINISHED;
+  SDL_Surface *originalSurface;
+  SDL_Renderer *renderer;
 
-  void recolorTexture(Graphics &graphics);
+  void recolorTexture();
 };
 
 #endif

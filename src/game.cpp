@@ -3,9 +3,11 @@
 #include <memory>
 
 #include "background.h"
+#include "creditsInButton.h"
+#include "creditsOutButton.h"
 #include "game.h"
 #include "graphics.h"
-#include "playButton.h"
+#include "startButton.h"
 
 /* Game Class
  * The "Game" class where the game loop runs
@@ -15,7 +17,7 @@
 namespace {
   const int FPS = 50;
   const int MAX_FRAME = 5 * 1000 / FPS;
-}  // namespace
+}
 
 Game::Game() {
   SDL_Init(SDL_INIT_EVERYTHING);
@@ -41,8 +43,6 @@ void Game::gameLoop() {
         return;
 
       if (event.type == SDL_MOUSEBUTTONDOWN) {
-        this->car->start(graphics);
-
         //Get mouse position
         int x, y;
         SDL_GetMouseState(&x, &y);
@@ -95,5 +95,7 @@ void Game::initGameElements(Graphics &graphics) {
 
   this->_gameSprites.push_back(this->car);
 
-  this->buttons.push_back(std::make_shared<PlayButton>(graphics));
+  this->buttons.push_back(std::make_shared<CreditsInButton>(graphics));
+  this->buttons.push_back(std::make_shared<CreditsOutButton>(graphics));
+  this->buttons.push_back(std::make_shared<StartButton>(graphics, this->car.get()));
 }

@@ -8,7 +8,7 @@
 class Button : public Sprite {
  public:
   Button();
-  Button(Graphics& graphics);
+  Button(Graphics& graphics, int x, int y);
 
   void handleMouseEvent(Uint32 eventType, int x, int y, unsigned int& coinsCount);
 

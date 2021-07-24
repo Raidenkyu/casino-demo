@@ -7,8 +7,9 @@ Car::Car() {}
 
 Car::Car(Graphics &graphics)
     : AnimatedSprite(graphics, "res/elements/car.png", 0, 0, 400, 300, -150, 300, 100, 0.4) {
-  graphics.loadImage("res/elements/car.png");
-  this->recolorTexture(graphics);
+  originalSurface = graphics.loadImage("res/elements/car.png");
+  renderer = graphics.getRenderer();
+  this->recolorTexture();
 
   this->setupAnimations();
 }
@@ -31,7 +32,7 @@ void Car::update(float elapsedTime) {
   AnimatedSprite::update(elapsedTime);
 }
 
-void Car::start(Graphics &graphics) {
+void Car::start() {
   switch (this->state) {
     case MOVING:
       this->state = PAUSED;
@@ -43,7 +44,7 @@ void Car::start(Graphics &graphics) {
       this->_x = -150;
       this->_y = 300;
 
-      this->recolorTexture(graphics);
+      this->recolorTexture();
       this->state = MOVING;
       break;
 
@@ -52,8 +53,7 @@ void Car::start(Graphics &graphics) {
   }
 }
 
-void Car::recolorTexture(Graphics &graphics) {
-  SDL_Surface *originalSurface = graphics.loadImage("res/elements/car.png");
+void Car::recolorTexture() {
   SDL_Surface *surface = SDL_DuplicateSurface(originalSurface);
 
   Uint32 *pixels = (Uint32 *)surface->pixels;
@@ -77,9 +77,13 @@ void Car::recolorTexture(Graphics &graphics) {
     }
   }
 
-  this->_spriteSheet = SDL_CreateTextureFromSurface(graphics.getRenderer(), surface);
+  this->_spriteSheet = SDL_CreateTextureFromSurface(renderer, surface);
 }
 
 CarState Car::getState() {
   return this->state;
+}
+
+bool Car::isFinished() {
+  return (this->state == FINISHED);
 }

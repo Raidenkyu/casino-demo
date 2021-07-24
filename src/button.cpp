@@ -2,8 +2,8 @@
 
 Button::Button() {}
 
-Button::Button(Graphics& graphics) : Sprite(graphics, "res/elements/button.png", 0, 0, 223, 106, 100, 10, 0.4),
-                                     coinsCount(coinsCount) {}
+Button::Button(Graphics& graphics, int x, int y) : Sprite(graphics, "res/elements/button.png", 0, 0, 223, 106, x, y, 0.4),
+                                                   coinsCount(coinsCount) {}
 
 void Button::handleMouseEvent(Uint32 eventType, int x, int y, unsigned int& coinsCount) {
   bool horizontalMatch = x > this->_x && x < this->_x + this->_sourceRect.w * this->scale;
