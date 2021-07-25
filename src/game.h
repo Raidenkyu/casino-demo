@@ -1,6 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include <SDL_mixer.h>
 #include <memory>
 #include <vector>
 
@@ -23,6 +24,7 @@ class Game {
   std::vector<std::shared_ptr<Button>> buttons;
   std::shared_ptr<Car> car;
   std::shared_ptr<Coins> coins;
+  Mix_Music *themeTrack;
 
   unsigned int coinsCount = 0;
 

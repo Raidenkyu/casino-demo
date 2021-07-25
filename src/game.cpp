@@ -10,10 +10,6 @@
 #include "graphics.h"
 #include "startButton.h"
 
-/* Game Class
- * The "Game" class where the game loop runs
- */
-
 // Define Framerate
 namespace {
   const int FPS = 50;
@@ -21,8 +17,11 @@ namespace {
 }
 
 Game::Game() {
+  //
   SDL_Init(SDL_INIT_EVERYTHING);
   TTF_Init();
+  Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+
   this->gameLoop();
 }
 
@@ -39,6 +38,7 @@ void Game::gameLoop() {
   int LAST_TIME_UPDATE = SDL_GetTicks();
 
   // Game Loop
+  Mix_PlayMusic(this->themeTrack, -1);
   while (true) {
     // Poll for an SDL Event
     if (SDL_PollEvent(&event)) {
@@ -95,8 +95,7 @@ void Game::update(float elapsedTime) {
 }
 
 void Game::initGameElements(Graphics &graphics, Fonts &fonts) {
-  this->_gameSprites.push_back(
-      std::make_shared<Background>(graphics));
+  this->_gameSprites.push_back(std::make_shared<Background>(graphics));
 
   this->car = std::make_shared<Car>(graphics);
 
@@ -107,4 +106,6 @@ void Game::initGameElements(Graphics &graphics, Fonts &fonts) {
   this->buttons.push_back(std::make_shared<StartButton>(graphics, fonts, this->car.get()));
 
   this->coins = std::make_shared<Coins>(graphics, &this->coinsCount);
+
+  this->themeTrack = Mix_LoadMUS("res/sound/theme.wav");
 }
