@@ -6,10 +6,10 @@
 
 Button::Button() {}
 
-Button::Button(Graphics& graphics, Fonts& fonts, std::string text, int x, int y) {
+Button::Button(Graphics& graphics, Fonts& fonts, std::string text, int x, int y, float textPadding) {
   this->_x = x;
   this->_y = y;
-  this->scale = 0.4;
+  this->scale = 0.45;
 
   this->_sourceRect.x = 0;
   this->_sourceRect.y = 0;
@@ -17,7 +17,7 @@ Button::Button(Graphics& graphics, Fonts& fonts, std::string text, int x, int y)
   this->_sourceRect.h = 106;
 
   SDL_Rect textRect;
-  textRect.x = 20;
+  textRect.x = 15 + textPadding;
   textRect.y = 40;
   textRect.w = 223;
   textRect.h = 106;

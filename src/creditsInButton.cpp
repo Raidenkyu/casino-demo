@@ -2,7 +2,7 @@
 
 CreditsInButton::CreditsInButton(){};
 
-CreditsInButton::CreditsInButton(Graphics& graphics, Fonts& fonts) : Button(graphics, fonts, "CREDITS IN", 100, 10) {
+CreditsInButton::CreditsInButton(Graphics& graphics, Fonts& fonts) : Button(graphics, fonts, "CREDITS IN", 90, 10) {
 }
 
 void CreditsInButton::buttonEffect(unsigned int& coinsCount) {

@@ -2,7 +2,7 @@
 
 StartButton::StartButton(){};
 
-StartButton::StartButton(Graphics& graphics, Fonts& fonts, Car* car) : Button(graphics, fonts, "START", 300, 10), car(car) {
+StartButton::StartButton(Graphics& graphics, Fonts& fonts, Car* car) : Button(graphics, fonts, "START", 310, 10, 50), car(car) {
 }
 
 void StartButton::buttonEffect(unsigned int& coinsCount) {

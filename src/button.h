@@ -9,7 +9,7 @@
 class Button : public Sprite {
  public:
   Button();
-  Button(Graphics& graphics, Fonts& fonts, std::string text, int x, int y);
+  Button(Graphics& graphics, Fonts& fonts, std::string text, int x, int y, float textPadding = 0);
 
   void handleMouseEvent(Uint32 eventType, int x, int y, unsigned int& coinsCount);
 
