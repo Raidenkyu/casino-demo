@@ -9,8 +9,6 @@ Background::Background(Graphics &graphics)
   this->setupAnimations();
 }
 
-void Background::animationDone(std::string currentAnimation) {}
-
 void Background::setupAnimations() {
   this->addAnimation(13, 0, 0, "", 500, 376);
 }

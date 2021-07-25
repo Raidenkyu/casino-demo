@@ -21,13 +21,16 @@ void Car::setupAnimations() {
 }
 
 void Car::update(float elapsedTime) {
+  // If the car is not moving, the update is skipped
   if (this->state != MOVING) return;
 
-  this->_x += 0.1 * elapsedTime;
-
+  // if the car leaves the screen, it means it has finished its movement
   if (this->_x > globals::SCREEN_WIDTH) {
     this->state = FINISHED;
+    return;
   }
+
+  this->_x += 0.1 * elapsedTime;
 
   AnimatedSprite::update(elapsedTime);
 }

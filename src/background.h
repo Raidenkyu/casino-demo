@@ -5,12 +5,14 @@
 
 class Graphics;
 
+/* Background Class
+ * The animated background of the game
+ */
 class Background : public AnimatedSprite {
  public:
   Background();
   Background(Graphics &graphics);
 
-  void animationDone(std::string currentAnimation);
   void setupAnimations();
 };
 
