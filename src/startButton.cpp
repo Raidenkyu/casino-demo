@@ -8,8 +8,7 @@ StartButton::StartButton(Graphics& graphics, Fonts& fonts, Car* car) : Button(gr
 void StartButton::buttonEffect(unsigned int& coinsCount) {
   if (!this->car->isFinished()) {
     this->car->start();
-  }
-  if (coinsCount > 0) {
+  } else if (coinsCount > 0) {
     coinsCount--;
     this->car->start();
   }

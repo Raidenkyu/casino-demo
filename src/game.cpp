@@ -66,11 +66,11 @@ void Game::gameLoop() {
     LAST_TIME_UPDATE = CURRENT_TIME_MS;
 
     // Draw the current Game Frame
-    this->draw(graphics);
+    this->draw(graphics, fonts);
   }
 }
 
-void Game::draw(Graphics &graphics) {
+void Game::draw(Graphics &graphics, Fonts &fonts) {
   graphics.clear();
 
   for (auto &sprite : this->_gameSprites) {
@@ -81,6 +81,8 @@ void Game::draw(Graphics &graphics) {
     button->draw(graphics);
   }
 
+  coins->draw(graphics, fonts);
+
   graphics.flip();
 }
 
@@ -88,6 +90,8 @@ void Game::update(float elapsedTime) {
   for (auto &sprite : this->_gameSprites) {
     sprite->update(elapsedTime);
   }
+
+  this->coins->update(elapsedTime);
 }
 
 void Game::initGameElements(Graphics &graphics, Fonts &fonts) {
@@ -101,4 +105,6 @@ void Game::initGameElements(Graphics &graphics, Fonts &fonts) {
   this->buttons.push_back(std::make_shared<CreditsInButton>(graphics, fonts));
   this->buttons.push_back(std::make_shared<CreditsOutButton>(graphics, fonts));
   this->buttons.push_back(std::make_shared<StartButton>(graphics, fonts, this->car.get()));
+
+  this->coins = std::make_shared<Coins>(graphics, &this->coinsCount);
 }

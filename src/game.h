@@ -7,6 +7,7 @@
 #include "animatedsprite.h"
 #include "button.h"
 #include "car.h"
+#include "coins.h"
 #include "fonts.h"
 
 class Graphics;
@@ -21,12 +22,13 @@ class Game {
   std::vector<std::shared_ptr<AnimatedSprite>> _gameSprites;
   std::vector<std::shared_ptr<Button>> buttons;
   std::shared_ptr<Car> car;
+  std::shared_ptr<Coins> coins;
 
   unsigned int coinsCount = 0;
 
   // Game Loop
   void gameLoop();
-  void draw(Graphics &graphics);
+  void draw(Graphics &graphics, Fonts &fonts);
   void update(float elapsedTime);
 
   // Game Setup
