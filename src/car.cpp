@@ -17,7 +17,7 @@ Car::Car(Graphics &graphics)
 void Car::animationDone(std::string currentAnimation) {}
 
 void Car::setupAnimations() {
-  this->addAnimation(2, 0, 0, "", 400, 300, Vector2(0, 0));
+  this->addAnimation(2, 0, 0, "", 400, 300);
 }
 
 void Car::update(float elapsedTime) {

@@ -13,6 +13,9 @@
 
 class Graphics;
 
+/* Game Class
+ * The "Game" class where the game loop runs
+ */
 class Game {
  public:
   Game();

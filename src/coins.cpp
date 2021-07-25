@@ -11,7 +11,7 @@ Coins::Coins(Graphics &graphics, unsigned int *coinsCount)
 void Coins::animationDone(std::string currentAnimation) {}
 
 void Coins::setupAnimations() {
-  this->addAnimation(8, 0, 0, "", 256, 256, Vector2(0, 0));
+  this->addAnimation(8, 0, 0, "", 256, 256);
 }
 
 void Coins::draw(Graphics &graphics, Fonts &fonts) {
