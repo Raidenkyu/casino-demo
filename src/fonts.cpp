@@ -2,7 +2,7 @@
 #include <iostream>
 
 Fonts::Fonts() {
-  this->font = TTF_OpenFont("/home/joao/Documentos/casino-demo/res/fonts/PressStart2P.ttf", 18);
+  this->font = TTF_OpenFont("res/fonts/PressStart2P.ttf", 18);
 
   if (this->font == NULL) {
     std::cout << "Failed to load font! SDL_ttf Error: " << TTF_GetError() << std::endl;
