@@ -5,12 +5,20 @@
 
 class Graphics;
 
+/*
+ * The different car states: The car is moving, the car finished its movement,
+ * the car paused its movement.
+ */
 enum CarState {
   MOVING,
   FINISHED,
   PAUSED
 };
 
+/*
+ * The animated car that moves when one coin is spent, and
+ * its movement can be paused and resumed at any time. 
+ */
 class Car : public AnimatedSprite {
  public:
   Car();

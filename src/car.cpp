@@ -9,6 +9,9 @@ Car::Car(Graphics &graphics)
     : AnimatedSprite(graphics, "res/elements/car.png", 0, 0, 400, 300, -150, 300, 100, 0.4) {
   originalSurface = graphics.loadImage("res/elements/car.png");
   renderer = graphics.getRenderer();
+
+  srand((unsigned)time(0));
+
   this->recolorTexture();
 
   this->setupAnimations();
@@ -57,16 +60,17 @@ void Car::start() {
 }
 
 void Car::recolorTexture() {
+  // Duplicates the original surface, to replace its red color by a randomly generated color
   SDL_Surface *surface = SDL_DuplicateSurface(originalSurface);
 
   Uint32 *pixels = (Uint32 *)surface->pixels;
 
-  srand((unsigned)time(0));
-
+  // Generates random values to every gradient of the color
   int newR = rand() % 0xFF;  // Random red gradient
   int newG = rand() % 0xFF;  // Random green gradient
   int newB = rand() % 0xFF;  // Random blue gradient
 
+  // Iterate pixel by pixel, and replace the red ones by the new color
   for (int i = 0; i < surface->h * surface->w; i++) {
     uint8_t r;
     uint8_t g;
@@ -75,6 +79,7 @@ void Car::recolorTexture() {
     uint32_t pixel = ((uint32_t *)surface->pixels)[i];
     SDL_GetRGB(pixel, surface->format, &r, &g, &b);
 
+    // If the pixel is red, the color will be replaced
     if (r == 0xBF && g == 0x1E && b == 0x2E) {
       pixels[i] = SDL_MapRGB(surface->format, newR, newG, newB);
     }
