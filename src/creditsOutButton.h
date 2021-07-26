@@ -3,6 +3,9 @@
 
 #include "button.h"
 
+/* CreditsOutButton Class
+ * The button to remove credits
+ */
 class CreditsOutButton : public Button {
  public:
   CreditsOutButton();

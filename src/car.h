@@ -15,7 +15,7 @@ enum CarState {
   PAUSED
 };
 
-/*
+/* Car Class
  * The animated car that moves when one coin is spent, and
  * its movement can be paused and resumed at any time. 
  */

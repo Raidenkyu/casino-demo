@@ -6,7 +6,7 @@
 #include "fonts.h"
 #include "sprite.h"
 
-/* AnimatedSprite Class
+/* Button Class
  * The base class of every button in the game
  */
 class Button : public Sprite {

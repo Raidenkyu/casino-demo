@@ -17,7 +17,7 @@ namespace {
 }
 
 Game::Game() {
-  //
+  // Init SDL components
   SDL_Init(SDL_INIT_EVERYTHING);
   TTF_Init();
   Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
@@ -73,39 +73,48 @@ void Game::gameLoop() {
 void Game::draw(Graphics &graphics, Fonts &fonts) {
   graphics.clear();
 
+  // Draws all the sprites
   for (auto &sprite : this->_gameSprites) {
     sprite->draw(graphics);
   }
 
+  // Draws all the buttons
   for (auto &button : this->buttons) {
     button->draw(graphics);
   }
 
+  // Draws the credits label
   coins->draw(graphics, fonts);
 
   graphics.flip();
 }
 
 void Game::update(float elapsedTime) {
+  // Updates the AnimatedSprites' animations
   for (auto &sprite : this->_gameSprites) {
     sprite->update(elapsedTime);
   }
 
+  // Update coins animation
   this->coins->update(elapsedTime);
 }
 
 void Game::initGameElements(Graphics &graphics, Fonts &fonts) {
+  // Insert Background
   this->_gameSprites.push_back(std::make_shared<Background>(graphics));
 
+  // Insert Car
   this->car = std::make_shared<Car>(graphics);
-
   this->_gameSprites.push_back(this->car);
 
+  // Insert Buttons
   this->buttons.push_back(std::make_shared<CreditsInButton>(graphics, fonts));
   this->buttons.push_back(std::make_shared<CreditsOutButton>(graphics, fonts));
   this->buttons.push_back(std::make_shared<StartButton>(graphics, fonts, this->car.get()));
 
+  // Insert Coins
   this->coins = std::make_shared<Coins>(graphics, &this->coinsCount);
 
+  // Load background theme
   this->themeTrack = Mix_LoadMUS("res/sound/theme.wav");
 }

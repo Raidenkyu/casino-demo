@@ -5,6 +5,9 @@
 
 #include "button.h"
 
+/* CreditsInButton Class
+ * The button to insert credits
+ */
 class CreditsInButton : public Button {
  public:
   CreditsInButton();

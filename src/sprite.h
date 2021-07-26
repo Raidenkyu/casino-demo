@@ -6,6 +6,10 @@
 
 class Graphics;
 
+/* Sprite Class
+ * Responsible for rendering sprites(with the help of graphics class) and
+ * detecting their respective collisions
+ */
 class Sprite {
  public:
   Sprite();

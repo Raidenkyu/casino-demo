@@ -5,6 +5,9 @@
 #include <SDL_ttf.h>
 #include <string>
 
+/* Fonts Class
+ * The class that generates text labels
+ */
 class Fonts {
  public:
   Fonts();

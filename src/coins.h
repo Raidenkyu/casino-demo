@@ -6,6 +6,9 @@
 
 class Graphics;
 
+/* Coins Class
+ * Counter of accumulated credits
+ */
 class Coins : public AnimatedSprite {
  public:
   Coins();

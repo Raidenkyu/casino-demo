@@ -8,8 +8,11 @@
 struct SDL_Window;
 struct SDL_Renderer;
 
+/* Graphics class
+ * Responsible for the graphics for the game
+ */
 class Graphics {
-public:
+ public:
   Graphics();
   ~Graphics();
   SDL_Surface *loadImage(const std::string &filepath);
@@ -19,7 +22,7 @@ public:
   void clear();
   SDL_Renderer *getRenderer() const;
 
-private:
+ private:
   SDL_Window *_window;
   SDL_Renderer *_renderer;
   std::map<std::string, SDL_Surface *> _spriteSheets;
